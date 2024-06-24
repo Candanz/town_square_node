@@ -92,7 +92,7 @@ router.post('/', async (request, env) => {
                   ),
                   thumbnail: {
                     url: role.Icon,
-                  }
+                  },
                 },
               ],
             },
