@@ -1,9 +1,12 @@
 export const ROLE_COMMAND = {
   name: 'role',
-  description: 'Get information about speicfied role',
-};
-
-export const RELOAD_COMMAND = {
-  name: 'reload',
-  description: 'Reloads the role data',
+  description: 'Get information about specified role',
+  options: [
+    {
+      name: 'role',
+      description: 'The role you want information on',
+      type: 3, //STRING
+      required: true,
+    },
+  ],
 };

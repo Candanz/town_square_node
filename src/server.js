@@ -4,8 +4,9 @@ import {
   InteractionType,
   verifyKey,
 } from 'discord-interactions';
-import { ROLE_COMMAND, RELOAD_COMMAND } from './commands.js';
-import { InteractionResponseFlags } from 'discord-interactions';
+import { ROLE_COMMAND } from './commands.js';
+
+import { ROLES } from '../roleData.js';
 
 class JsonResponse extends Response {
   constructor(body, init) {
@@ -30,10 +31,11 @@ router.post('/', async (request, env) => {
     request,
     env,
   );
-  if (!isValid || !interaction)
-    return new Response('Bad request signature. ', { status: 401 });
+  if (!isValid || !interaction) {
+    return new Response('Bad request signature.', { status: 401 });
+  }
 
-  if (interaction.type == InteractionType.PING) {
+  if (interaction.type === InteractionType.PING) {
     return new JsonResponse({
       type: InteractionResponseType.PONG,
     });
@@ -41,26 +43,67 @@ router.post('/', async (request, env) => {
 
   if (interaction.type === InteractionType.APPLICATION_COMMAND) {
     switch (interaction.data.name.toLowerCase()) {
-      case ROLE_COMMAND.toLowerCase(): {
-        return new JsonResponse({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            content: 'SUP MATE',
-          },
-        });
-      }
-      case RELOAD_COMMAND.toLowerCase(): {
-        return new JsonResponse({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: {
-            content: 'SUP MATE',
-          },
-        });
+      case ROLE_COMMAND.name.toLowerCase(): {
+        if (!ROLES[interaction.data.options[0].value.toLowerCase()]) {
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: `No data for specified role "${interaction.data.options[0].value}" exists.`,
+            },
+          });
+        } else {
+          var role = ROLES[interaction.data.options[0].value.toLowerCase()];
+          var color = Number('0x000000');
+          var type = role.type.charAt(0).toUpperCase() + role.type.slice(1);
+
+          switch (role.type) {
+            case 'outsider':
+              color = Number('0x368cff');
+              break;
+            case 'townsfolk':
+              color = Number('0x081ee5');
+              break;
+            case 'minion':
+              color = Number('0xb90000');
+              break;
+            case 'demon':
+              color = Number('0xd62d2d');
+              break;
+            case 'traveler':
+              color = Number('0x95c59b6');
+              break;
+            case 'fabled':
+              color = Number('0xe3ab15');
+              break;
+          }
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              embeds: [
+                {
+                  color: color,
+                  author: {
+                    name: 'Town Square',
+                  },
+                  title: role.name + ' - ' + type,
+                  description: role.description,
+                  url: encodeURI(
+                    `https://wiki.bloodontheclocktower.com/${role.name}`,
+                  ),
+                  thumbnail: {
+                    url: role.Icon,
+                  }
+                },
+              ],
+            },
+          });
+        }
       }
       default:
         return new JsonResponse({ error: 'Unknown Type' }, { status: 400 });
     }
   }
+
   console.error('Unknown Type');
   return new JsonResponse({ error: 'Unknown Type' }, { status: 400 });
 });
