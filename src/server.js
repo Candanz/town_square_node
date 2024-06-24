@@ -70,7 +70,7 @@ router.post('/', async (request, env) => {
               color = Number('0xd62d2d');
               break;
             case 'traveler':
-              color = Number('0x95c59b6');
+              color = Number('0x9c59b6');
               break;
             case 'fabled':
               color = Number('0xe3ab15');
