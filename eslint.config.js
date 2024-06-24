@@ -10,10 +10,8 @@ export default [
       },
     },
     rules: {
-    "prettier/prettier": [ "error",
-        { "endOfLine": "auto" }
-    ]
-    }
+      'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    },
   },
   js.configs.recommended,
   prettier,
