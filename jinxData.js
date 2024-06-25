@@ -87,7 +87,7 @@ export const JINXES = [
       'If the Marionette thinks that they are the Huntsman, the Damsel was added.',
   },
   {
-    roles: ['marionette', "lil'monsta"],
+    roles: ['marionette', 'lilmonsta'],
     description:
       "The Marionette neighbors a Minion, not the Demon. The Marionette is not woken to choose who takes the Lil' Monsta token, and does not learn they are the Marionette if they have the Lil' Monsta token.",
   },
@@ -421,31 +421,31 @@ export const JINXES = [
       'If Leviathan nominates and executes the Soldier, the Soldier does not die.',
   },
   {
-    roles: ["lil'monsta", 'hatter'],
+    roles: ['lilmonsta', 'hatter'],
     description:
       "If a Demon chooses Lil' Monsta, they also choose a Minion to become and babysit Lil' Monsta tonight.",
   },
   {
-    roles: ["lil'monsta", 'magician'],
+    roles: ['lilmonsta', 'magician'],
     description: 'Only 1 jinxed character can be in play.',
   },
   {
-    roles: ["lil'monsta", 'organgrinder'],
+    roles: ['lilmonsta', 'organgrinder'],
     description:
       "Votes for the Organ Grinder count if the Organ Grinder is babysitting Lil' Monsta.",
   },
   {
-    roles: ["lil'monsta", 'poppygrower'],
+    roles: ['lilmonsta', 'poppygrower'],
     description:
       "If the Poppy Grower is in play, Minions don't wake together. They are woken one by one, until one of them chooses to take the Lil' Monsta token.",
   },
   {
-    roles: ["lil'monsta", 'scarletwoman'],
+    roles: ['lilmonsta', 'scarletwoman'],
     description:
       "If there are 5 or more players alive and the player holding the Lil' Monsta token dies, the Scarlet Woman is given the Lil' Monsta token tonight.",
   },
   {
-    roles: ["lil'monsta", 'vizier'],
+    roles: ['lilmonsta', 'vizier'],
     description:
       "The Vizier can die by execution if they are babysitting Lil' Monsta.",
   },
