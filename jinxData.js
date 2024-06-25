@@ -114,7 +114,7 @@ export const JINXES = [
   {
     roles: ['organgrinder', 'flowergirl'],
     description:
-      'If the Organ Grinder is causing eyes-closed voting, the Flowergirl wakes tonight to choose a player',
+      'If the Organ Grinder is causing eyes-closed voting, the Flowergirl wakes tonight to choose a player: they learn if that player voted today. (instead of their normal ability)',
   },
   {
     roles: ['organgrinder', 'minstrel'],
