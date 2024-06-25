@@ -8,6 +8,10 @@ import { ROLE_COMMAND } from './commands.js';
 
 import { ROLES } from '../roleData.js';
 
+import DamerauLevenshtein from '@crob/damerau-levenshtein';
+
+const damerau = new DamerauLevenshtein();
+
 class JsonResponse extends Response {
   constructor(body, init) {
     const jsonBody = JSON.stringify(body);
@@ -44,61 +48,82 @@ router.post('/', async (request, env) => {
   if (interaction.type === InteractionType.APPLICATION_COMMAND) {
     switch (interaction.data.name.toLowerCase()) {
       case ROLE_COMMAND.name.toLowerCase(): {
-        if (!ROLES[interaction.data.options[0].value.toLowerCase()]) {
-          return new JsonResponse({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              content: `No data for specified role "${interaction.data.options[0].value}" exists.`,
-            },
-          });
-        } else {
-          var role = ROLES[interaction.data.options[0].value.toLowerCase()];
-          var color = Number('0x000000');
-          var type = role.type.charAt(0).toUpperCase() + role.type.slice(1);
+        var roleOpt = interaction.data.options[0].value.toLowerCase();
+        var role = ROLES[roleOpt];
+        if (!role) {
+          var distance = 99;
+          var roleId = '';
+          Object.keys(ROLES).forEach((roleKey) => {
+            if (roleKey.indexOf(roleOpt) > -1) {
+              distance = -1;
+              roleId = roleKey;
+            }
 
-          switch (role.type) {
-            case 'outsider':
-              color = Number('0x368cff');
-              break;
-            case 'townsfolk':
-              color = Number('0x081ee5');
-              break;
-            case 'minion':
-              color = Number('0xb90000');
-              break;
-            case 'demon':
-              color = Number('0xd62d2d');
-              break;
-            case 'traveler':
-              color = Number('0x9c59b6');
-              break;
-            case 'fabled':
-              color = Number('0xe3ab15');
-              break;
-          }
-          return new JsonResponse({
-            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-            data: {
-              embeds: [
-                {
-                  color: color,
-                  author: {
-                    name: 'Town Square',
-                  },
-                  title: role.name + ' - ' + type,
-                  description: role.description,
-                  url: encodeURI(
-                    `https://wiki.bloodontheclocktower.com/${role.name}`,
-                  ),
-                  thumbnail: {
-                    url: role.Icon,
-                  },
-                },
-              ],
-            },
+            var dist = damerau.distance(roleOpt, roleKey);
+            if (dist < distance) {
+              distance = dist;
+              roleId = roleKey;
+            }
           });
+
+          if (distance > 5) {
+            return new JsonResponse({
+              type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+              data: {
+                content: `No data for specified role "${roleOpt}" exists. Cloest option would be "${roleId}".`,
+              },
+            });
+          }
+          console.log(roleId);
+          role = ROLES[roleId];
         }
+
+        var color = Number('0x000000');
+        var type = role.type.charAt(0).toUpperCase() + role.type.slice(1);
+
+        switch (role.type) {
+          case 'outsider':
+            color = Number('0x368cff');
+            break;
+          case 'townsfolk':
+            color = Number('0x081ee5');
+            break;
+          case 'minion':
+            color = Number('0xb90000');
+            break;
+          case 'demon':
+            color = Number('0xd62d2d');
+            break;
+          case 'traveler':
+            color = Number('0x9c59b6');
+            break;
+          case 'fabled':
+            color = Number('0xe3ab15');
+            break;
+        }
+        return new JsonResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            embeds: [
+              {
+                color: color,
+                author: {
+                  name: 'Town Square',
+                },
+                title: role.name + ' - ' + type,
+                description: role.description,
+                url: encodeURI(
+                  `https://wiki.bloodontheclocktower.com/${role.name}`,
+                ),
+                thumbnail: {
+                  url: role.Icon,
+                },
+              },
+            ],
+          },
+        });
       }
+
       default:
         return new JsonResponse({ error: 'Unknown Type' }, { status: 400 });
     }

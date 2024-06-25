@@ -17,6 +17,7 @@
     "publish": "wrangler deploy"
   },
   "dependencies": {
+    "@crob/damerau-levenshtein": "^1.0.1",
     "discord-interactions": "^4.0.0",
     "itty-router": "^5.0.9"
   },
