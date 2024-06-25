@@ -10,3 +10,22 @@ export const ROLE_COMMAND = {
     },
   ],
 };
+
+export const JINX_COMMAND = {
+  name: 'jinx',
+  description: 'Get information about the jinx between two roles',
+  options: [
+    {
+      name: 'role1',
+      description: 'The first role in the jinx',
+      type: 3, //STRING
+      required: true,
+    },
+    {
+      name: 'role2',
+      description: 'The second role in the jinx',
+      type: 3,
+      required: true,
+    },
+  ],
+};

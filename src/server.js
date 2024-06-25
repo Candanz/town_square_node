@@ -4,9 +4,10 @@ import {
   InteractionType,
   verifyKey,
 } from 'discord-interactions';
-import { ROLE_COMMAND } from './commands.js';
+import { ROLE_COMMAND, JINX_COMMAND } from './commands.js';
 
 import { ROLES } from '../roleData.js';
+import { JINXES } from '../jinxData.js';
 
 import DamerauLevenshtein from '@crob/damerau-levenshtein';
 
@@ -35,6 +36,7 @@ router.post('/', async (request, env) => {
     request,
     env,
   );
+
   if (!isValid || !interaction) {
     return new Response('Bad request signature.', { status: 401 });
   }
@@ -74,7 +76,6 @@ router.post('/', async (request, env) => {
               },
             });
           }
-          console.log(roleId);
           role = ROLES[roleId];
         }
 
@@ -122,6 +123,79 @@ router.post('/', async (request, env) => {
             ],
           },
         });
+      }
+
+      case JINX_COMMAND.name.toLowerCase(): {
+        var opt1 = interaction.data.options[0].value.toLowerCase();
+        var opt2 = interaction.data.options[1].value.toLowerCase();
+
+        var opts = [opt1, opt2];
+        var roles = [];
+        opts.forEach((opt) => {
+          if (ROLES[opt]) {
+            roles.push(ROLES[opt]);
+          } else {
+            let dist = 99;
+            let roleId;
+            Object.keys(ROLES).forEach((roleKey) => {
+              if (roleKey.indexOf(opt) > -1) {
+                dist = -1;
+                roleId = roleKey;
+              } else {
+                var d = damerau.distance(opt, roleKey);
+                if (d < dist) {
+                  dist = d;
+                  roleId = roleKey;
+                }
+              }
+            });
+            if (dist > 5) {
+              return new JsonResponse({
+                type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+                data: {
+                  content: `No data for specified role "${role}" exists. Closest option would be "${roleId}".`,
+                },
+              });
+            }
+
+            roles.push(ROLES[roleId]);
+          }
+        });
+
+        var selectedJinx;
+
+        JINXES.forEach((jinx) => {
+          if (
+            (jinx.roles[0] == roles[0].id && jinx.roles[1] == roles[1].id) ||
+            (jinx.roles[1] == roles[0].id && jinx.roles[0] == roles[1].id)
+          ) {
+            selectedJinx = jinx;
+          }
+        });
+        if (selectedJinx) {
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              embeds: [
+                {
+                  color: Number('0x9c59b6'),
+                  author: {
+                    name: 'Town Square',
+                  },
+                  title: 'Jinx: ' + roles[0].name + ' - ' + roles[1].name,
+                  description: selectedJinx.description,
+                },
+              ],
+            },
+          });
+        } else {
+          return new JsonResponse({
+            type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+            data: {
+              content: `No jinx found between ${roles[0].name} and ${roles[1].name}.`,
+            },
+          });
+        }
       }
 
       default:
