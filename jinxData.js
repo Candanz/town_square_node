@@ -486,7 +486,7 @@ export const JINXES = [
     description: 'Riot registers as a Minion to the Damsel.',
   },
   {
-    roles: ['riot', "devil'sadvocate"],
+    roles: ['riot', "devilsadvocate"],
     description:
       "Players that die by nomination register as being executed to the Devil's Advocate.",
   },

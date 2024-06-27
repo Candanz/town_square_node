@@ -1,5 +1,6 @@
 import { AutoRouter } from 'itty-router';
 import {
+  InteractionResponseFlags,
   InteractionResponseType,
   InteractionType,
   verifyKey,
@@ -72,6 +73,7 @@ router.post('/', async (request, env) => {
             return new JsonResponse({
               type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
               data: {
+                flags: InteractionResponseFlags.EPHEMERAL,
                 content: `No data for specified role "${roleOpt}" exists. Cloest option would be "${roleId}".`,
               },
             });
@@ -102,9 +104,37 @@ router.post('/', async (request, env) => {
             color = Number('0xe3ab15');
             break;
         }
+
+        var jinxes = [];
+
+        JINXES.forEach((jinx) => {
+          if (jinx.roles[0] == role.id || jinx.roles[1] == role.id)
+            jinxes.push(jinx);
+        });
+        jinxes = jinxes.map((jinx) => {
+          console.log(jinx.roles[0] + ' OR ' + jinx.roles[1] + ' = ' + role.id);
+          if (role.id == jinx.roles[0]) return ROLES[jinx.roles[1]].name;
+          if (role.id == jinx.roles[1]) return ROLES[jinx.roles[0]].name;
+        });
+
+        var fields = [];
+
+        fields.push({
+          name: 'Ability',
+          value: role.description,
+        });
+
+        if (jinxes.length > 0) {
+          fields.push({
+            name: 'Jinxes',
+            value: jinxes.join(', '),
+          });
+        }
+
         return new JsonResponse({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
+            flags: InteractionResponseFlags.EPHEMERAL,
             embeds: [
               {
                 color: color,
@@ -112,13 +142,13 @@ router.post('/', async (request, env) => {
                   name: 'Town Square',
                 },
                 title: role.name + ' - ' + type,
-                description: role.description,
                 url: encodeURI(
                   `https://wiki.bloodontheclocktower.com/${role.name}`,
                 ),
                 thumbnail: {
-                  url: role.Icon,
+                  url: role.icon,
                 },
+                fields: fields,
               },
             ],
           },
@@ -176,6 +206,7 @@ router.post('/', async (request, env) => {
           return new JsonResponse({
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
+              flags: InteractionResponseFlags.EPHEMERAL,
               embeds: [
                 {
                   color: Number('0x9c59b6'),
@@ -192,6 +223,7 @@ router.post('/', async (request, env) => {
           return new JsonResponse({
             type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
             data: {
+              flags: InteractionResponseFlags.EPHEMERAL,
               content: `No jinx found between ${roles[0].name} and ${roles[1].name}.`,
             },
           });
