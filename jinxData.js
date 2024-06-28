@@ -112,19 +112,14 @@ export const JINXES = [
       'If the Organ Grinder is causing eyes closed voting, the Butler may raise their hand to vote but their vote is only counted if their master voted too.',
   },
   {
-    roles: ['organgrinder', 'flowergirl'],
-    description:
-      'If the Organ Grinder is causing eyes-closed voting, the Flowergirl wakes tonight to choose a player: they learn if that player voted today. (instead of their normal ability)',
-  },
-  {
     roles: ['organgrinder', 'minstrel'],
     description:
-      'Only 1 jinxed character can be in play. Evil players start knowing which player and character it is.',
+      'If the Minstrel makes everyone drunk, the Organ Grinder keeps their ability but the Minstrel keeps their eyes open when voting.',
   },
   {
     roles: ['organgrinder', 'preacher'],
     description:
-      'Only 1 jinxed character can be in play. Evil players start knowing which player and character it is.',
+      'If the Preacher removes the Organ Grinder ability, the Organ Grinder keeps their ability but the Preacher keeps their eyes open when voting.',
   },
   {
     roles: ['pithag', 'cultleader'],
@@ -320,7 +315,7 @@ export const JINXES = [
   {
     roles: ['alhadikhia', 'mastermind'],
     description:
-      'Only 1 jinxed character can be in play. Evil players start knowing which player and character it is.',
+      'If the Al-Hadikhia dies by execution, and the Mastermind is alive, the Al-Hadikhia chooses 3 good players tonight: if all 3 choose to live, evil wins. Otherwise, good wins.',
   },
   {
     roles: ['alhadikhia', 'scarletwoman'],
@@ -369,7 +364,8 @@ export const JINXES = [
   },
   {
     roles: ['legion', 'preacher'],
-    description: 'Only 1 jinxed character can be in play.',
+    description:
+      'If the Preacher chooses Legion, Legion keeps their ability, but the Preacher might learn they are Legion.',
   },
   {
     roles: ['leviathan', 'banshee'],
@@ -427,7 +423,8 @@ export const JINXES = [
   },
   {
     roles: ['lilmonsta', 'magician'],
-    description: 'Only 1 jinxed character can be in play.',
+    description:
+      "Each night, the Magician chooses a Minion: if that Minion & Lil' Monsta are alive, that Minion babysits Lil' Monsta.",
   },
   {
     roles: ['lilmonsta', 'organgrinder'],
@@ -607,5 +604,20 @@ export const JINXES = [
     roles: ['yaggababble', 'exorcist'],
     description:
       'If the Exorcist chooses the Yaggababble, the Yaggababble ability does not kill tonight.',
+  },
+  {
+    roles: ['soldier', 'kazali'],
+    description:
+      'If the Kazali turns the Soldier into a Minion, the Soldier chooses which not-in-play Minion to become.',
+  },
+  {
+    roles: ['legion', 'minstrel'],
+    description:
+      'If Legion died by execution today, Legion keeps their ability, but the Minstrel might learn they are Legion.',
+  },
+  {
+    roles: ['summoner', 'preacher'],
+    description:
+      'If the Preacher chose the Summoner on or before the 3rd night, the Summoner chooses which Demon, but the Storyteller chooses which player.',
   },
 ];
