@@ -770,7 +770,7 @@ export const ROLES = {
     name: 'Balloonist',
     type: 'townsfolk',
     description:
-      'Each night, you learn 1 player of each character type, until there are no more types to learn. [+1 Outsider]',
+      'Each night, you learn a player of a different character type than last night. [+0 or +1 Outsider]',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/balloonist.png',
   },
   cultleader: {
@@ -926,8 +926,7 @@ export const ROLES = {
     id: 'plaguedoctor',
     name: 'Plague Doctor',
     type: 'outsider',
-    description:
-      'If you die, the Storyteller gains a not-in-play Minion ability.',
+    description: 'If you die, the Storyteller gains a Minion ability.',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/plaguedoctor.png',
   },
   ogre: {
@@ -1063,7 +1062,7 @@ export const ROLES = {
     name: 'Harpy',
     type: 'minion',
     description:
-      'Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or both might die.',
+      'Each night, choose 2 players: tomorrow, the 1st player is mad that the 2nd is evil, or one or both might die.',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/harpy.png',
   },
   summoner: {
@@ -1079,7 +1078,7 @@ export const ROLES = {
     name: "Lil' Monsta",
     type: 'demon',
     description:
-      'Each night, Minions choose who babysits Lil\' Monsta\'s token & "is the Demon". A player dies each night*. [+1 Minion]',
+      "Each night, Minions choose who babysits Lil' Monsta & 'is the Demon'. Each night*, a player might die. [+1 Minion]",
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/lilmonsta.png',
   },
   lleech: {
