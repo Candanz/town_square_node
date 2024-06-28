@@ -1126,7 +1126,7 @@ export const ROLES = {
     name: 'Kazali',
     type: 'demon',
     description:
-      'Each night*, choose a player: they die. [You choose which players are Minions. -? to +? Outsiders]',
+      'Each night*, choose a player: they die. [You choose which players are which Minions. -? to +? Outsiders]',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/kazali.png',
   },
   yaggababble: {
