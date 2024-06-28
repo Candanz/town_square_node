@@ -1147,117 +1147,125 @@ export const ROLES = {
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/gangster.png',
   },
   doomsayer: {
-    name: 'Doomsayer',
     id: 'doomsayer',
+    name: 'Doomsayer',
     description:
       'If 4 or more players live, each living player may publicly choose (once per game) that a player of their own alignment dies.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/doomsayer.png',
   },
   buddhist: {
-    name: 'Buddhist',
     id: 'buddhist',
+    name: 'Buddhist',
     description:
       'For the first 2 minutes of each day, veteran players may not talk.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/buddhist.png',
   },
   hellslibrarian: {
-    name: "Hell's Librarian",
     id: 'hellslibrarian',
+    name: "Hell's Librarian",
     description:
       'Something bad might happen to whoever talks when the Storyteller has asked for silence.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/hellslibrarian.png',
   },
   revolutionary: {
-    name: 'Revolutionary',
     id: 'revolutionary',
+    name: 'Revolutionary',
     description:
       '2 neighboring players are known to be the same alignment. Once per game, 1 of them registers falsely.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/revolutionary.png',
   },
   fiddler: {
-    name: 'Fiddler',
     id: 'fiddler',
+    name: 'Fiddler',
     description:
       'Once per game, the Demon secretly chooses an opposing player: all players choose which of these 2 players win.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/fiddler.png',
   },
   toymaker: {
-    name: 'Toymaker',
     id: 'toymaker',
+    name: 'Toymaker',
     description:
       'The Demon may choose not to attack & must do this at least once per game. Evil players get normal starting info.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/toymaker.png',
   },
   fibbin: {
-    name: 'Fibbin',
     id: 'fibbin',
+    name: 'Fibbin',
     description:
       'Once per game, 1 good player might get incorrect information.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/fibbin.png',
   },
   duchess: {
-    name: 'Duchess',
     id: 'duchess',
+    name: 'Duchess',
     description:
       'Each day, 3 players may choose to visit you. At night*, each visitor learns how many visitors are evil, but 1 gets false info.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/duchess.png',
   },
   sentinel: {
-    name: 'Sentinel',
     id: 'sentinel',
+    name: 'Sentinel',
     description: 'There might be 1 extra or 1 fewer Outsider in play.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/sentinel.png',
   },
   djinn: {
-    name: 'Djinn',
     id: 'djinn',
+    name: 'Djinn',
     description: "Use the Djinn's special rule. All players know what it is.",
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/djinn.png',
   },
   spiritofivory: {
-    name: 'Spirit of Ivory',
     id: 'spiritofivory',
+    name: 'Spirit of Ivory',
     description: "There can't be more than 1 extra evil player.",
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/spiritofivory.png',
   },
   bootlegger: {
-    name: 'Bootlegger',
     id: 'bootlegger',
+    name: 'Bootlegger',
     description: 'This script has homebrew characters or rules.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/bootlegger.png',
   },
   ferryman: {
-    name: 'Ferryman',
     id: 'ferryman',
+    name: 'Ferryman',
     description: 'On the final day, all dead players regain their vote token.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/ferryman.png',
   },
   gardener: {
-    name: 'Gardener',
     id: 'gardener',
+    name: 'Gardener',
     description: "The Storyteller assigns 1 or more players' characters.",
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/gardener.png',
   },
   stormcatcher: {
-    name: 'Storm Catcher',
     id: 'stormcatcher',
+    name: 'Storm Catcher',
     description:
       'Name a good character. If in play, they can only die by execution, but evil players learn which player it is.',
     type: 'fabled',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/stormcatcher.png',
+  },
+  alsaahir: {
+    id: 'alsaahir',
+    name: 'alsaahir',
+    description:
+      'Once per day, if you publically guess which players are Minion(s) and which are Demon(s), good wins.',
+    type: 'townsfolk',
+    icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/alsaahir.png',
   },
 };
