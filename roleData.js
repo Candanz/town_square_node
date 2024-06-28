@@ -1262,7 +1262,7 @@ export const ROLES = {
   },
   alsaahir: {
     id: 'alsaahir',
-    name: 'alsaahir',
+    name: 'Alsaahir',
     description:
       'Once per day, if you publically guess which players are Minion(s) and which are Demon(s), good wins.',
     type: 'townsfolk',
