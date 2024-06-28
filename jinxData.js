@@ -620,4 +620,9 @@ export const JINXES = [
     description:
       'If the Preacher chose the Summoner on or before the 3rd night, the Summoner chooses which Demon, but the Storyteller chooses which player.',
   },
+  {
+    roles: ['vizier', 'alsaahir'],
+    description:
+      'If the Vizier is in play, the Alsaahir must also guess which Demon(s) are in play.',
+  },
 ];
