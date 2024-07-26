@@ -625,4 +625,21 @@ export const JINXES = [
     description:
       'If the Vizier is in play, the Alsaahir must also guess which Demon(s) are in play.',
   },
+  {
+    roles: ['cannibal', 'zealot'],
+    description:
+      'If the Cannibal gains the Zealot ability, the Cannibal learns this',
+  },
+  {
+    roles: ['vizier', 'zealot'],
+    description: 'The Zealot might register as evil to the Vizier.',
+  },
+  {
+    roles: ['legion', 'zealot'],
+    description: "The Zealot might register as evil to Legion's ability.",
+  },
+  {
+    roles: ['riot', 'zealot'],
+    description: 'If you are nominated, you must nominate again, even if dead.',
+  },
 ];
