@@ -1274,5 +1274,5 @@ export const ROLES = {
       'If there are 5 or more players alive, you must vote for every nomination.',
     type: 'outsider',
     icon: 'https://raw.githubusercontent.com/nicholas-eden/townsquare/develop/src/assets/icons/zealot.png',
-  }
+  },
 };
